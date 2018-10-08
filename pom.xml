@@ -49,8 +49,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugin</groupId>
+                <version>3.5.4</version>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
         </plugins>
-    </build>
 
+    </build>
+ <scm><developerConnection>
+     scm:git:https://github.com/mudradimukesh/sfg-pet-clinic.git
+ </developerConnection></scm>
 
 </project>
