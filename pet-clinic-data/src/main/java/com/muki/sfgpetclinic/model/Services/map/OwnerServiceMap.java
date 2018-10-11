@@ -1,11 +1,18 @@
 package services.map;
 
 import com.muki.sfgpetclinic.model.Owner;
+import org.springframework.stereotype.Service;
 import services.CrudService;
+import services.OwnerService;
 
 import java.util.Set;
+@Service
+public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
 
-public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements CrudService<Owner,Long> {
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
