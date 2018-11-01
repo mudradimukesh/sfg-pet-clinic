@@ -1,11 +1,9 @@
-package services;
+package com.muki.sfgpetclinic.model.Services;
 
 import com.muki.sfgpetclinic.model.Owner;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface OwnerService extends CrudService<Owner,Long>
-
-{
+public interface OwnerService extends CrudService<Owner, Long> {
     Owner findByLastName(String lastName);
 }

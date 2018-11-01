@@ -1,17 +1,21 @@
-package services.map;
+package com.muki.sfgpetclinic.model.Services.map;
 
+import com.muki.sfgpetclinic.model.Services.SpecialitiesService;
+import com.muki.sfgpetclinic.model.Services.VetService;
+import com.muki.sfgpetclinic.model.Speciality;
 import com.muki.sfgpetclinic.model.Vet;
 import org.springframework.stereotype.Service;
-import services.CrudService;
-import services.VetService;
 
 import java.util.Set;
+
 @Service
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
+public class
+VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
     }
+    private SpecialitiesService specialitiesService;
 
     @Override
     public Vet findById(Long id) {
@@ -20,7 +24,24 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetSe
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object.getId(),object);
+
+        if(object!=null)
+        {
+            if(object.getSpecialities()!=null)
+            {
+                object.getSpecialities().forEach(speciality ->{
+                    if(speciality.getId()==null)
+                    {
+                       Speciality savespe=specialitiesService.save(speciality);
+                       speciality.setId(savespe.getId());
+                    }
+                        }
+                        );
+            }
+        }
+
+
+        return super.save(object);
     }
 
     @Override
